@@ -1,0 +1,195 @@
+<app-timesheet></app-timesheet>
+<!-- <div class="timesheet-info bg-tab">
+  <p class="text-warning text-center">
+    <i class="bi bi-info-circle-fill mx-2"></i> {{ currentTimesheetInfo }}
+  </p>
+</div> -->
+<div class="container">
+  <button class="btn btn-sm btn-dark my-2" (click)="openNoBackdrop(content)">
+    New Entry
+  </button>
+
+  <!-- Table  -->
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Project</th>
+          <th scope="col">Task</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">Calc Hrs.</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recordList; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.date }}</td>
+          <td>{{ item.projectId }}</td>
+          <td>{{ item.taskId }}</td>
+          <td>{{ item.startTime }}</td>
+          <td>{{ item.endTime }}</td>
+          <td>{{ item.calHrs }}</td>
+          <td>
+            {{ item.desc }}
+          </td>
+          <td>
+            <ul class="list-group list-group-horizontal">
+              <li class="list-unstyled">
+                <a class="text-info cursor-pointer" ngbTooltip="Edit">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+              </li>
+              <li class="list-unstyled mx-1">
+                <a class="text-danger" ngbTooltip="Delete">
+                  <i class="bi bi-archive-fill"></i>
+                </a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center" *ngIf="recordList.length > 0">
+      <button class="btn btn-sm btn-success">Submit For Approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- Side Canvas  -->
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header bg-tab">
+    <h4 class="offcanvas-title text-center text-light">
+      <i class="bi bi-clock-fill"></i> New Entry
+    </h4>
+    <!-- <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button> -->
+  </div>
+  <div class="offcanvas-body">
+    <form class="row">
+      <div class="col-lg-9 col-sm-12">
+        <label>Date</label>
+        <div class="input-group">
+          <input
+            class="form-control form-control-sm"
+            placeholder="yyyy-mm-dd"
+            name="date"
+            [(ngModel)]="date"
+            ngbDatepicker
+            #d="ngbDatepicker"
+          />
+          <button
+            class="btn btn-sm btn-outline-secondary bi bi-calendar3"
+            (click)="d.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <button
+          class="btn btn-sm btn-outline-primary my-4"
+          (click)="selectToday()"
+          ngbTooltip="Click to select today's date"
+        >
+          Today
+        </button>
+      </div>
+      <div class="col-lg-6 col-sm-12 my-2">
+        <label>Project</label>
+        <select
+          class="form-select form-select-sm"
+          aria-label=".form-select-sm example"
+          name="projectId"
+          [(ngModel)]="projectId"
+        >
+          <option selected value="">Select Project</option>
+          <option value="1">HireProUs</option>
+          <option value="2">ProAcc</option>
+          <option value="3">ProCompare</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-sm-12 my-2">
+        <label>Task</label>
+        <select
+          class="form-select form-select-sm"
+          name="taskId"
+          [(ngModel)]="taskId"
+        >
+          <option selected value="">Select Task</option>
+          <option value="1">Coding & Development</option>
+          <option value="2">KT Session</option>
+          <option value="3">QC</option>
+          <option value="3">Requirement Gathering</option>
+          <option value="3">Testing & Integration</option>
+          <option value="3">Support</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-sm-12 my-2">
+        <label>Start Time</label>
+        <ngb-timepicker
+          name="start_time"
+          [(ngModel)]="start_time"
+          [meridian]="meridian"
+        ></ngb-timepicker>
+      </div>
+      <div class="col-lg-6 col-sm-12 my-2">
+        <label>End Time</label>
+        <ngb-timepicker
+          name="end_time"
+          [(ngModel)]="end_time"
+          [meridian]="meridian"
+        ></ngb-timepicker>
+      </div>
+      <div class="col-12 my-2">
+        <label
+          >Calc Hrs. <span class="badge bg-info">{{ caclHrs }}</span></label
+        >
+      </div>
+      <div class="col-lg-12 col-sm-12 my-2">
+        <label>Description</label>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            style="height: 100px"
+            (click)="calcHrs()"
+            [(ngModel)]="description"
+            name="description"
+          ></textarea>
+          <label for="floatingTextarea2">Description</label>
+        </div>
+      </div>
+    </form>
+    <div class="text-center my-2">
+      <button
+        type="button"
+        class="btn btn-sm btn-primary mx-1"
+        (click)="pushRecord()"
+      >
+        Save & Next entry
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-warning mx-2"
+        (click)="pushRecord()"
+      >
+        Save & close
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-dark"
+        (click)="offcanvas.close('Close click')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</ng-template>

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-tab {
+  --bs-bg-opacity: 1;
+  background-color: #163339;
+}
+
+.timesheet-info {
+  display: flex !important;
+  align-content: center;
+  justify-content: center;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/* This changes the width for all the offcanvas in the app */
+@media (min-width: 768px) {
+  .offcanvas {
+    width: 50% !important;
+  }
+}

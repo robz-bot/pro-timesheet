@@ -1,0 +1,45 @@
+li.nav-item:hover {
+  background-color: #dee2e6;
+  color: black;
+  border-radius: 10px;
+}
+
+
+
+
+
+/* For extremely small screen devices (595px and below) */
+@media only screen and (max-width: 595px) {
+  .showLine {
+    border-left: 0px;
+  }
+}
+
+/* Small screen devices (600px and above) */
+@media only screen and (min-width: 600px) {
+  .showLine {
+    border-left: 0px;
+  }
+
+}
+
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  .showLine {
+    border-left: 1px solid rgb(227 226 226);
+  }
+}
+
+/* Big screen devices (889px and above) */
+@media only screen and (min-width: 889px) {
+  .showLine {
+    border-left: 1px solid rgb(227 226 226);
+  }
+}
+
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  .showLine {
+    border-left: 1px solid rgb(227 226 226);
+  }
+}

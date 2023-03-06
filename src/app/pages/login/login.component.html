@@ -1,0 +1,126 @@
+<div class="login-page bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <!-- <h3 class="mb-3">Login Now</h3> -->
+        <div class="bg-white shadow rounded">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="bg-primary d-lg-none d-sm-block d-md-none p-3">
+                <h2 class="fs-1 text-light text-center">Pro Timesheet</h2>
+              </div>
+              <div class="form-left h-100 py-5 px-5">
+                <form action="" class="row g-4">
+                  <div class="col-12">
+                    <label>Email<span class="text-danger"> *</span></label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                      <input
+                        [(ngModel)]="userEmail"
+                        name="userEmail"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Email"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label>Password<span class="text-danger"> *</span></label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="bi bi-lock-fill"></i>
+                      </div>
+                      <input
+                        [type]="passwordType"
+                        class="form-control"
+                        placeholder="Enter Password"
+                        [(ngModel)]="userPassword"
+                        name="userPassword"
+                        (keyup)="onKey($event)"
+                      />
+                      <div class="input-group-text cursor-pointer">
+                        <i
+                          class="bi bi-eye-slash-fill"
+                          [hidden]="showPassword"
+                          (click)="togglePassword('show')"
+                        ></i>
+                        <i
+                          class="bi bi-eye-fill"
+                          [hidden]="!showPassword"
+                          (click)="togglePassword('hide')"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-sm-6">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineFormCheck"
+                      />
+                       <label class="form-check-label" for="inlineFormCheck"
+                        >Remember me</label
+                      >
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="col-sm-12">
+                    <a href="#" class="float-end text-primary"
+                      >Forgot Password?</a
+                    >
+                  </div> -->
+
+                  <div class="col-12 text-center">
+                    <button
+                      type="submit"
+                      class="btn btn-primary px-4 mt-4"
+                      (click)="loginTimesheet()"
+                    >
+                      login
+                    </button>
+                  </div>
+                  <div class="col-12 lg-none d-sm-block d-md-none p-3">
+                    <picture
+                      class="d-flex align-items-center justify-content-center"
+                    >
+                      <img
+                        class="text-center text-secondary mt-3"
+                        src="assets/img/promantus-new-logo.png"
+                        width="200"
+                    /></picture>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-5 ps-0">
+              <div
+                class="form-right h-100 bg-primary text-white text-center pt-5 d-none d-md-block"
+              >
+                <h2 class="fs-1 text-light">Pro Timesheet</h2>
+                <i class="bi bi-calendar-week"></i>
+                <p>Powered by</p>
+                <!-- <h2 class="fs-1">Welcome Back!!!</h2> -->
+                <div
+                  class="d-flex align-items-center justify-content-center bg-light container"
+                >
+                  <picture>
+                    <img
+                      class="text-center text-secondary m-4"
+                      src="assets/img/promantus-new-logo.png"
+                      width="200"
+                  /></picture>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <p class="text-end text-secondary mt-3">Bootstrap 5 Login Page Design</p> -->
+      </div>
+    </div>
+  </div>
+</div>
