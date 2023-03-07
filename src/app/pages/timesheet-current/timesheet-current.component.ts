@@ -3,11 +3,24 @@ import {
   NgbCalendar,
   NgbDateStruct,
   NgbOffcanvas,
+  NgbTypeaheadModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, OperatorFunction } from 'rxjs';
 import { FORMAT, TIMESHEET_INFO, TIME_METHODS } from 'src/app/constant';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { TimesheetSave } from 'src/app/models/timesheet';
 import { ToasterService } from 'src/app/services/toaster.service';
-
+import { FormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
+const tasks = [
+  'Coding & Development',
+  'KT Session',
+  'QC',
+  'Requirement Gathering',
+  'Testing & Integration',
+  'Support',
+];
+const projects = ['HireProUs', 'ProAcc', 'ProCompare'];
 @Component({
   selector: 'app-timesheet-current',
   templateUrl: './timesheet-current.component.html',
@@ -35,6 +48,37 @@ export class TimesheetCurrentComponent implements OnInit {
   description: string = '';
 
   ngOnInit(): void {}
+
+  formatter = (result: string) => result.toUpperCase();
+
+  searchTasks: OperatorFunction<string, readonly string[]> = (
+    text$: Observable<string>
+  ) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map((term: any) =>
+        term === ''
+          ? []
+          : tasks
+              .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+              .slice(0, 10)
+      )
+    );
+  searchProjects: OperatorFunction<string, readonly string[]> = (
+    text$: Observable<string>
+  ) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map((term: any) =>
+        term === ''
+          ? []
+          : projects
+              .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+              .slice(0, 10)
+      )
+    );
 
   openNoBackdrop(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { backdrop: false, position: 'end' });
@@ -76,7 +120,7 @@ export class TimesheetCurrentComponent implements OnInit {
   recordList: TimesheetSave[] = new Array();
   timesheet: TimesheetSave = new TimesheetSave();
 
-  pushRecord() {
+  pushRecord(type: string) {
     //Setting up the current value
     this.timesheet.date = FORMAT.format_date(
       this.date?.year,
@@ -143,5 +187,18 @@ export class TimesheetCurrentComponent implements OnInit {
     console.log(this.timesheet);
     //Final array
     console.log(this.recordList);
+
+    //Restting fields
+    this.clearFields();
+
+    if (type == 'Close') this.offcanvasService.dismiss();
+  }
+
+  clearFields() {
+    this.caclHrs = '';
+    this.projectId = '';
+    this.taskId = '';
+    this.description = '';
+    this.date = undefined;
   }
 }

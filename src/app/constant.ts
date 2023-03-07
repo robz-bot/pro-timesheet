@@ -2,7 +2,7 @@ export class TIMESHEET_INFO {
   public static TIMESHEET_CURRENT =
     'Fill out your date-wise timesheet here and submit it for approval.';
   public static TIMESHEET_WAIT =
-    'Record your date-wise time-sheet here and submit it for approval';
+    'View your date-wise records and it is waiting for approval';
 }
 
 export class TIME_METHODS {

@@ -1,16 +1,13 @@
 <app-timesheet></app-timesheet>
-<!-- <div class="timesheet-info bg-tab">
-  <p class="text-warning text-center">
-    <i class="bi bi-info-circle-fill mx-2"></i> {{ currentTimesheetInfo }}
-  </p>
-</div> -->
-<div class="container">
-  <button class="btn btn-sm btn-dark my-2" (click)="openNoBackdrop(content)">
-    New Entry
-  </button>
+<div class="mx-3">
+  <div class="newEntryBtn d-flex align-items-center justify-content-center">
+    <button class="btn btn-sm btn-dark my-2" (click)="openNoBackdrop(content)">
+      <i class="bi bi-clock-fill"></i> New Entry
+    </button>
+  </div>
 
   <!-- Table  -->
-  <div class="table-responsive">
+  <div class="">
     <table class="table table-sm table-striped">
       <thead>
         <tr>
@@ -38,7 +35,7 @@
             {{ item.desc }}
           </td>
           <td>
-            <ul class="list-group list-group-horizontal">
+            <!-- <ul class="list-group list-group-horizontal">
               <li class="list-unstyled">
                 <a class="text-info cursor-pointer" ngbTooltip="Edit">
                   <i class="bi bi-pencil-square"></i>
@@ -49,7 +46,25 @@
                   <i class="bi bi-archive-fill"></i>
                 </a>
               </li>
-            </ul>
+            </ul> -->
+            <div ngbDropdown>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                ngbDropdownToggle
+              >
+                Actions
+              </button>
+              <div ngbDropdownMenu>
+                <button ngbDropdownItem>
+                  <i class="bi bi-pencil-square"></i> Edit
+                </button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>
+                  <i class="bi bi-archive-fill"></i> Delete
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -104,7 +119,17 @@
       </div>
       <div class="col-lg-6 col-sm-12 my-2">
         <label>Project</label>
-        <select
+        <input
+          id="typeahead-format"
+          type="text"
+          placeholder="Search for project"
+          class="form-control form-control-sm"
+          [(ngModel)]="projectId"
+          name="projectId"
+          [ngbTypeahead]="searchProjects"
+          [resultFormatter]="formatter"
+        />
+        <!-- <select
           class="form-select form-select-sm"
           aria-label=".form-select-sm example"
           name="projectId"
@@ -114,11 +139,21 @@
           <option value="1">HireProUs</option>
           <option value="2">ProAcc</option>
           <option value="3">ProCompare</option>
-        </select>
+        </select> -->
       </div>
       <div class="col-lg-6 col-sm-12 my-2">
         <label>Task</label>
-        <select
+        <input
+          id="typeahead-format"
+          type="text"
+          placeholder="Search for task"
+          class="form-control form-control-sm"
+          [(ngModel)]="taskId"
+          name="taskId"
+          [ngbTypeahead]="searchTasks"
+          [resultFormatter]="formatter"
+        />
+        <!-- <select
           class="form-select form-select-sm"
           name="taskId"
           [(ngModel)]="taskId"
@@ -130,7 +165,7 @@
           <option value="3">Requirement Gathering</option>
           <option value="3">Testing & Integration</option>
           <option value="3">Support</option>
-        </select>
+        </select> -->
       </div>
       <div class="col-lg-6 col-sm-12 my-2">
         <label>Start Time</label>
@@ -172,14 +207,14 @@
       <button
         type="button"
         class="btn btn-sm btn-primary mx-1"
-        (click)="pushRecord()"
+        (click)="pushRecord('Next')"
       >
         Save & Next entry
       </button>
       <button
         type="button"
         class="btn btn-sm btn-warning mx-2"
-        (click)="pushRecord()"
+        (click)="pushRecord('Close')"
       >
         Save & close
       </button>
@@ -188,7 +223,7 @@
         class="btn btn-sm btn-dark"
         (click)="offcanvas.close('Close click')"
       >
-        Cancel
+        Close
       </button>
     </div>
   </div>

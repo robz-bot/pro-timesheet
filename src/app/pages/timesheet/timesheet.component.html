@@ -31,8 +31,11 @@
         role="tab"
         [routerLink]="['/pro-timesheet/timesheet/wait']"
         routerLinkActive="active"
-        ngbTooltip="{{ waitTimesheetInfo }}"
       >
+      <i
+      class="bi bi-info-circle-fill mx-2"
+      ngbTooltip="{{ waitTimesheetInfo }}"
+    ></i>
         Wait for Accept
       </button>
     </li>
