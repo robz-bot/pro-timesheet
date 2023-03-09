@@ -7,4 +7,6 @@ export class TimesheetSave {
   "endTime": string;
   "calHrs": string;
   "desc": string;
+  "isSubmittedForApproval":boolean
+  "timesheetStatus":string //Bending, approved, declined
 }

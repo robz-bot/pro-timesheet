@@ -81,7 +81,7 @@ export class TimesheetCurrentComponent implements OnInit {
     );
 
   openNoBackdrop(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { backdrop: false, position: 'end' });
+    this.offcanvasService.open(content, { backdrop: 'static', position: 'end' });
   }
 
   selectToday() {
