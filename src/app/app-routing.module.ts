@@ -17,6 +17,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   //new changes
+  //new 2
   {
     path: 'pro-timesheet',
     component: HomeComponent,
