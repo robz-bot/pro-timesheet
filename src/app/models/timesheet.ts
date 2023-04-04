@@ -1,12 +1,20 @@
-export class TimesheetSave {
+export class timesheet {
   "id": string;
   "date": string;
   "projectId": string;
-  "taskId": string;
+  "task": string;
   "startTime": string;
   "endTime": string;
   "calHrs": string;
-  "desc": string;
+  "description": string;
+  "userId": string;
+  "managerId": string
   "isSubmittedForApproval":boolean
-  "timesheetStatus":string //Bending, approved, declined
+  "timesheetStatus":string //pending, approved, declined
+  "updatedBy": string;
+  "createdBy": string;
+  "userName": string;
+  "projectName": string;
+  "comments": string;
+  "approvedByManager":string
 }

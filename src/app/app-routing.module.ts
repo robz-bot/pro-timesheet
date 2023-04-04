@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MyTimesheetComponent } from './pages/my-timesheet/my-timesheet.component';
 import { TimesheetCurrentComponent } from './pages/timesheet-current/timesheet-current.component';
 import { TimesheetWaitComponent } from './pages/timesheet-wait/timesheet-wait.component';
 import { TimesheetComponent } from './pages/timesheet/timesheet.component';
@@ -40,6 +41,12 @@ const routes: Routes = [
       {
         path: 'timesheet/wait',
         component: TimesheetWaitComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'timesheet/my-timesheet',
+        component: MyTimesheetComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard],
       },

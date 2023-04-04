@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimesheetWaitComponent } from './timesheet-wait.component';
+import { BarChartComponent } from './bar-chart.component';
 
-describe('TimesheetWaitComponent', () => {
-  let component: TimesheetWaitComponent;
-  let fixture: ComponentFixture<TimesheetWaitComponent>;
+describe('BarChartComponent', () => {
+  let component: BarChartComponent;
+  let fixture: ComponentFixture<BarChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimesheetWaitComponent ]
+      declarations: [ BarChartComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TimesheetWaitComponent);
+    fixture = TestBed.createComponent(BarChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

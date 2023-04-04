@@ -26,4 +26,7 @@ export class ToasterService {
   public showRequiredError(title: string, message: string): void {
     this.toastrService.error(message + ' is required!', title);
   }
+  public showInvalidError(title: string, message: string): void {
+    this.toastrService.error(message + ' is invalid!', title);
+  }
 }
