@@ -120,7 +120,7 @@ export class TimesheetWaitComponent implements OnInit {
     } else {
       item.comments = this.comments;
       item = this.itemFromTable;
-      item.approvedByManager = 'Reject';
+      item.approvedByManager = 'Rejected';
       this.getAllTimeSheetByManagerId();
     }
 
