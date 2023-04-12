@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { DatePipe } from '@angular/common';
 import {
   ApexChart,
   ApexAxisChartSeries,
@@ -42,27 +42,31 @@ export type ChartOptions = {
 export class BarChartComponent implements OnInit {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: any;
-  constructor(private dashboardService:DashboardServiceService) {
+  constructor(
+    private dashboardService: DashboardServiceService,
+    private datePipe: DatePipe
+  ) {}
+  responseList: any;
+  hours: any;
+  tasks: any;
+  userId = sessionStorage.getItem('userId');
+  today = new Date();
+  currentMonth = this.datePipe.transform(this.today, 'MMMM');
+  currentYear = this.datePipe.transform(this.today, 'YYYY');
 
-  }
-  responseList:any;
-  hours:any
-  tasks:any
   ngOnInit(): void {
-
-    this.dashboardService.getTaskAndHours().subscribe((res) => {
+    this.dashboardService.getTaskAndHours(this.userId).subscribe((res) => {
       console.log(res);
       this.responseList = res;
-      const {hours,tasks} = this.responseList
-      this.hours = hours
-      this.tasks = tasks
-
+      const { thours, tasks } = this.responseList;
+      this.hours = thours;
+      this.tasks = tasks;
 
       this.chartOptions = {
         series: [
           {
             name: 'task',
-            data:this.hours,
+            data: this.hours,
           },
         ],
         chart: {
@@ -91,17 +95,19 @@ export class BarChartComponent implements OnInit {
           },
         },
         dataLabels: {
-          enabled: false,
+          enabled: true,
         },
         legend: {
-          show: false,
+          show: true,
         },
         grid: {
-          show: false,
+          show: true,
         },
         xaxis: {
-
           categories: this.tasks,
+          title:{
+            text:'tasks'
+          },
           labels: {
             style: {
               colors: [
@@ -118,7 +124,12 @@ export class BarChartComponent implements OnInit {
             },
           },
         },
+        yaxis: {
+          title: {
+            text: 'Hours'
+          }
+        }
       };
-    })
+    });
   }
 }

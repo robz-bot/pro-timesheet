@@ -37,10 +37,18 @@
           <form class="row row-cols-sm-auto">
             <div>
               <div class="input-group">
-                <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" name="d2" ngbDatepicker
-                  #d2="ngbDatepicker" />
-                <button class="btn btn-sm btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()"
-                  type="button"></button>
+                <input
+                  class="form-control form-control-sm"
+                  placeholder="dd/mm/yyyy"
+                  name="d2"
+                  ngbDatepicker
+                  #d2="ngbDatepicker"
+                />
+                <button
+                  class="btn btn-sm btn-outline-secondary bi bi-calendar3"
+                  (click)="d2.toggle()"
+                  type="button"
+                ></button>
               </div>
             </div>
           </form>
@@ -49,133 +57,147 @@
           <div class="fw-bold cursor-pointer">
             <div>
               <p class="badge text-bg-light mx-2">Tags:</p>
-              <p class="badge text-bg-info mx-2" (click)="allRecords()">All</p>
               <p
-                class="badge text-bg-info mx-2"
+                class="badge mx-2"
+                [ngClass]="setAllTagColor ? 'text-bg-warning' : 'text-bg-info '"
+                (click)="searchTagRecord('All')"
+              >
+                All
+              </p>
+              <p
+                class="badge mx-2"
+                [ngClass]="
+                  setTodayTagColor ? 'text-bg-warning' : 'text-bg-info '
+                "
                 (click)="searchTagRecord('Today')"
               >
                 Today
               </p>
               <p
-                class="badge text-bg-info mx-2"
+                class="badge mx-2"
+                [ngClass]="setYesTagColor ? 'text-bg-warning' : 'text-bg-info '"
                 (click)="searchTagRecord('Yesterday')"
               >
                 Yesterday
               </p>
               <p
-                class="badge text-bg-info mx-2"
+                class="badge mx-2"
+                [ngClass]="
+                  setThisWeekTagColor ? 'text-bg-warning' : 'text-bg-info '
+                "
                 (click)="searchTagRecord('This Week')"
               >
                 This Week
               </p>
               <p
-                class="badge text-bg-info"
+                class="badge"
+                [ngClass]="
+                  setLastWeekTagColor ? 'text-bg-warning' : 'text-bg-info '
+                "
                 (click)="searchTagRecord('Last Week')"
               >
                 Last Week
               </p>
-			    </div>
             </div>
           </div>
         </div>
       </div>
-      <table class="table table-sm table-striped table-bordered">
-        <thead class="table-info">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Emp. Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Project</th>
-            <th scope="col">Task</th>
-            <!-- <th scope="col">Start Time</th> -->
-            <th scope="col">Time (Est hrs.)</th>
-            <!-- <th scope="col">Calc Hrs.</th> -->
-            <th scope="col">Description</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of recordList; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ item.userName }}</td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.projectName }}</td>
-            <td>{{ item.task }}</td>
-            <td>
-              {{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})
-            </td>
-            <td>{{ item.description }}</td>
-            <td *ngIf="item.approvedByManager == 'Pending'">
-              <button
-                type="button"
-                style="font-size: 10px"
-                class="btn btn-outline-success mx-2"
-                (click)="approveTimeSheet('Approved', item)"
-              >
-                <i class="bi bi-check2"></i>
-              </button>
-              <button
-                type="button"
-                style="height: 30px; font-size: 10px"
-                class="btn btn-outline-danger m-2"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                (click)="getItem(item)"
-              >
-                <i class="bi bi-x-lg modal-dialog modal-dialog-centered"></i>
-              </button>
-              <div
-                class="modal fade"
-                id="staticBackdrop"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        Reject Comments
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <!-- <input type="textarea" name="" id="" > -->
-                      <textarea
-					  class="form-control form-control-sm"
-                        cols="53"
-                        rows="5"
-                        [(ngModel)]="comments"
-                      ></textarea>
-                    </div>
+    </div>
+    <table class="table table-sm table-striped table-bordered">
+      <thead class="table-info">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Emp. Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Project</th>
+          <th scope="col">Task</th>
+          <!-- <th scope="col">Start Time</th> -->
+          <th scope="col">Time (Est hrs.)</th>
+          <!-- <th scope="col">Calc Hrs.</th> -->
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recordList; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ item.userName }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.projectName }}</td>
+          <td>{{ item.task }}</td>
+          <td>{{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})</td>
+          <td>{{ item.description }}</td>
+          <td *ngIf="item.approvedByManager == 'Pending'">
+            <button
+              type="button"
+              style="font-size: 10px"
+              class="btn btn-outline-success mx-2"
+              (click)="approveTimeSheet('Approved', item)"
+            >
+              <i class="bi bi-check2"></i>
+            </button>
+            <button
+              type="button"
+              style="height: 30px; font-size: 10px"
+              class="btn btn-outline-danger m-2"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              (click)="getItem(item)"
+            >
+              <i class="bi bi-x-lg modal-dialog modal-dialog-centered"></i>
+            </button>
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                      Reject Comments
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <input type="textarea" name="" id="" > -->
+                    <textarea
+                      class="form-control form-control-sm"
+                      cols="53"
+                      rows="5"
+                      [(ngModel)]="comments"
+                    ></textarea>
+                  </div>
 
-                    <div class="modal-footer" style="padding-right: 185px">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        (click)="approveTimeSheet('Declined', item)"
-                      >
-                        Save
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                    </div>
+                  <div class="modal-footer" style="padding-right: 185px">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="approveTimeSheet('Declined', item)"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
                   </div>
                 </div>
               </div>
-              <!-- <ul class="list-group list-group-horizontal">
+            </div>
+            <!-- <ul class="list-group list-group-horizontal">
                 <li class="list-unstyled">
                   <a class="text-info cursor-pointer" ngbTooltip="Edit">
                     <i class="bi bi-pencil-square"></i>
@@ -187,16 +209,15 @@
                   </a>
                 </li>
               </ul> -->
-            </td>
-            <td *ngIf="item.approvedByManager == 'Approved'">
-              <p class="badge bg-success">Approved</p>
-            </td>
-            <td *ngIf="item.approvedByManager == 'Rejected'">
-              <p class="badge bg-danger">Rejected</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          </td>
+          <td *ngIf="item.approvedByManager == 'Approved'">
+            <p class="badge bg-success">Approved</p>
+          </td>
+          <td *ngIf="item.approvedByManager == 'Rejected'">
+            <p class="badge bg-danger">Rejected</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
+</div>

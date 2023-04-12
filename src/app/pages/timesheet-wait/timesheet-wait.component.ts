@@ -35,6 +35,11 @@ export class TimesheetWaitComponent implements OnInit {
   }
 
   recordList: timesheet[] = new Array();
+  setAllTagColor: boolean = true;
+  setTodayTagColor: boolean = false;
+  setYesTagColor: boolean = false;
+  setThisWeekTagColor: boolean = false;
+  setLastWeekTagColor: boolean = false;
 
   getTimeSheetByUserIdAndApproval() {
     this.timesheetService
@@ -130,6 +135,42 @@ export class TimesheetWaitComponent implements OnInit {
     });
   }
   searchTagRecord(type: string) {
+    if(type == 'All'){
+      this.getAllTimeSheetByManagerId();
+    this.setAllTagColor = true;
+    this.setTodayTagColor = false;
+    this.setYesTagColor = false;
+    this.setThisWeekTagColor = false;
+    this.setLastWeekTagColor = false;
+    }
+    if (type == 'Today') {
+      this.setAllTagColor = false;
+      this.setTodayTagColor = true;
+      this.setYesTagColor = false;
+      this.setThisWeekTagColor = false;
+      this.setLastWeekTagColor = false;
+    }
+    if (type == 'Yesterday') {
+      this.setAllTagColor = false;
+      this.setTodayTagColor = false;
+      this.setYesTagColor = true;
+      this.setThisWeekTagColor = false;
+      this.setLastWeekTagColor = false;
+    }
+    if (type == 'This Week') {
+      this.setAllTagColor = false;
+      this.setTodayTagColor = false;
+      this.setYesTagColor = false;
+      this.setThisWeekTagColor = true;
+      this.setLastWeekTagColor = false;
+    }
+    if (type == 'Last Week') {
+      this.setAllTagColor = false;
+      this.setTodayTagColor = false;
+      this.setYesTagColor = false;
+      this.setThisWeekTagColor = false;
+      this.setLastWeekTagColor = true;
+    }
     const searchDto = {
       type: type,
     };
@@ -137,8 +178,5 @@ export class TimesheetWaitComponent implements OnInit {
       console.log(res);
       this.recordList = res;
     });
-  }
-  allRecords() {
-    this.getAllTimeSheetByManagerId();
   }
 }

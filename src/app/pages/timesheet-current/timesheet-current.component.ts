@@ -167,7 +167,7 @@ export class TimesheetCurrentComponent implements OnInit {
     console.log(item);
     this.timesheet.id = item.id;
     this.timesheet.userId = item.userId;
-    this.timesheet.managerId = item.managerId;
+    // this.timesheet.managerId = item.managerId;
     //2023-3-14
     this.date = {
       day: Number(item.date.toString().split('-')[2]),
@@ -218,6 +218,7 @@ export class TimesheetCurrentComponent implements OnInit {
     this.timesheet.description = this.description;
     this.timesheet.createdBy = this.userId;
     this.timesheet.updatedBy = this.userId;
+    console.log(this.timesheet);
     this.timesheetService.updateTimeSheet(this.timesheet).subscribe((res) => {
       console.log(res);
       this.getTimeSheetByUserIdAndApproval();
@@ -330,7 +331,7 @@ export class TimesheetCurrentComponent implements OnInit {
         return;
       } else {
         this.getTimeSheetByUserIdAndApproval();
-        //Restting fields
+        //Reseting fields
         this.clearFields();
       }
     });

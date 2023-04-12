@@ -1,13 +1,24 @@
-<div id="chart">
-  <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [dataLabels]="chartOptions.dataLabels"
-    [plotOptions]="chartOptions.plotOptions"
-    [yaxis]="chartOptions.yaxis"
-    [xaxis]="chartOptions.xaxis"
-    [legend]="chartOptions.legend"
-    [colors]="chartOptions.colors"
-    [grid]="chartOptions.grid"
-  ></apx-chart>
-</div>
+<ng-container *ngIf="this.hours.length > 0 && this.tasks.length > 0">
+  <h4 class="badge text-bg-dark fs-05">
+    Worked tasks and hours for the month - {{ currentMonth }} {{ currentYear }}
+  </h4>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [grid]="chartOptions.grid"
+    ></apx-chart>
+  </div>
+</ng-container>
+<ng-container *ngIf="this.hours.length == 0 && this.tasks.length == 0">
+  <h4 class="badge text-bg-dark fs-05">
+    Worked tasks and hours for the month - {{ currentMonth }} {{ currentYear }}
+  </h4>
+ <small class="mx-2 badge text-bg-light">No record(s) found</small>
+</ng-container>
