@@ -21,6 +21,7 @@ import { DonutChartComponent } from './pages/charts/donut-chart/donut-chart.comp
 import { BarChartComponent } from './pages/charts/bar-chart/bar-chart.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { BirthdayComponent } from './pages/occasions/birthday/birthday.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MyTimesheetComponent,
     DonutChartComponent,
     BarChartComponent,
+    BirthdayComponent,
   ],
   imports: [
     BrowserModule,
