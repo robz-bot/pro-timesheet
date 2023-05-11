@@ -8,6 +8,10 @@ import { TimesheetWaitComponent } from './pages/timesheet-wait/timesheet-wait.co
 import { TimesheetComponent } from './pages/timesheet/timesheet.component';
 import { AuthGuard } from './services/auth.guard';
 import { HomeComponent } from './shared-components/home/home.component';
+import { ManagerHistoryComponent } from './pages/history/manager-history/manager-history.component';
+import { ApprovedHistoryComponent } from './pages/history/approved-history/approved-history.component';
+import { RejectHistoryComponent } from './pages/history/reject-history/reject-history.component';
+import { HolidayComponent } from './pages/holiday/holiday.component';
 
 const routes: Routes = [
   {
@@ -41,6 +45,30 @@ const routes: Routes = [
       {
         path: 'timesheet/wait',
         component: TimesheetWaitComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'timesheet/manager-history',
+        component: ManagerHistoryComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'timesheet/approved-history',
+        component: ApprovedHistoryComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'timesheet/rejected-history',
+        component: RejectHistoryComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'timesheet/holiday',
+        component: HolidayComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard],
       },

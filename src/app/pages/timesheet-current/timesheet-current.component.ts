@@ -61,6 +61,7 @@ export class TimesheetCurrentComponent implements OnInit {
   createdBy: string = '';
   updatedBy: string = '';
   isEdit: boolean = false;
+  billable: boolean =false;
 
   ngOnInit(): void {
     this.getAllProjectName();
@@ -216,6 +217,7 @@ export class TimesheetCurrentComponent implements OnInit {
     this.timesheet.projectId = projId;
     this.timesheet.task = this.taskId;
     this.timesheet.description = this.description;
+    this.timesheet.billable=this.billable;
     this.timesheet.createdBy = this.userId;
     this.timesheet.updatedBy = this.userId;
     console.log(this.timesheet);
@@ -310,7 +312,7 @@ export class TimesheetCurrentComponent implements OnInit {
     }
     this.timesheet.userId = this.userId;
     this.timesheet.managerId = this.managerId;
-
+    this.timesheet.billable = this.billable;
     let projId = 0;
     this.projects.filter((x: any) => {
       // 627: IWBI Testing

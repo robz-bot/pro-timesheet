@@ -22,7 +22,7 @@ export type ChartOptions = {
   dataLabels: ApexDataLabels;
 };
 @Component({
-  selector: 'app-donut-chart',
+  selector: 'app-donut-chart', 
   templateUrl: './donut-chart.component.html',
   styleUrls: ['./donut-chart.component.css'],
 })
@@ -53,7 +53,7 @@ export class DonutChartComponent implements OnInit {
 
       this.chartOptions = {
         series: this.hours,
-        labels: this.projects,
+        labels: this.projects, 
         chart: {
           width: 380,
           type: 'donut',

@@ -84,9 +84,9 @@
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <button class="nav-link " id="v-pills-current-tab" type="button" role="tab" aria-selected="false"
-      [routerLink]="['/pro-timesheet/dashboard/' + loggedInUserId]" routerLinkActive="active">
+        [routerLink]="['/pro-timesheet/dashboard/' + loggedInUserId]" routerLinkActive="active">
         <!-- <i class="bi bi-info-circle-fill mx-2" ngbTooltip="{{ currentTimesheetInfo }}"></i> -->
-        Dashboard
+        <i class="bi bi-clipboard-fill mx-2"></i> Dashboard
       </button>
     </li>
     <li class="nav-item">
@@ -104,11 +104,25 @@
       </button>
     </li>
     <!-- Only for manger level login  -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="enableMenu">
       <button class="nav-link" id="v-pills-wait-tab" data-bs-toggle="pill" data-bs-target="#v-pills-wait" type="button"
         role="tab" [routerLink]="['/pro-timesheet/timesheet/wait']" routerLinkActive="active">
+        <i class="bi bi-hourglass-split mx-2"></i>
         Wait to Accept
       </button>
     </li>
+    <li class="nav-item" *ngIf="enableMenu">
+      <button class="nav-link" id="v-pills-wait-tab" data-bs-toggle="pill" data-bs-target="#v-pills-wait" type="button"
+        role="tab" [routerLink]="['/pro-timesheet/timesheet/approved-history']" routerLinkActive="active">
+        <i class="bi bi-journal-text mx-2"></i>History 
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" id="v-pills-wait-tab" data-bs-toggle="pill" data-bs-target="#v-pills-wait" type="button"
+        role="tab" [routerLink]="['/pro-timesheet/timesheet/holiday']" routerLinkActive="active">
+        <i class="bi bi-list-check mx-2"></i>Holidays 
+      </button>
+    </li>
+   
   </ul>
 </div>

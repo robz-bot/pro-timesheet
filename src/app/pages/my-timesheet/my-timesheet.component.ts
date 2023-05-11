@@ -13,7 +13,7 @@ import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootst
 export class MyTimesheetComponent implements OnInit {
   page = 1;
   pageSize = 5;
-  collectionSize = 0
+  collectionSize = 0                                  
 
   constructor(private timesheetService: TimesheetService) {
 

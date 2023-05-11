@@ -1,75 +1,72 @@
 <app-timesheet></app-timesheet>
-<div class="m-4">
+<div class="m-2">
   <!-- <ngb-pagination [collectionSize]="50" [(page)]="page" aria-label="Default pagination"></ngb-pagination> -->
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="collectionSize"
-      [(page)]="page"
-      [pageSize]="pageSize"
-      (pageChange)="refreshCountries()"
-    >
+  <div class="d-flex justify-content-between p-1">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+      (pageChange)="refreshCountries()">
     </ngb-pagination>
 
-    <select
-      class="form-select form-select-sm"
-      style="width: auto"
-      [(ngModel)]="pageSize"
-      (ngModelChange)="refreshCountries()"
-    >
+    <select class="form-select form-select-sm " style="width: auto; height: 34px;" [(ngModel)]="pageSize"
+      (ngModelChange)="refreshCountries()">
+
       <option [ngValue]="5">5 items per page</option>
       <option [ngValue]="10">10 items per page</option>
       <option [ngValue]="15">15 items per page</option>
     </select>
   </div>
-  <table class="table table-sm table-striped table-bordered">
-    <thead class="table-info">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Date</th>
-        <th scope="col">Project</th>
-        <th scope="col">Task</th>
-        <th scope="col">Time (Est hrs.)</th>
-        <!-- <th scope="col">End Time</th> -->
-        <!-- <th scope="col">Calc Hrs.</th> -->
-        <!-- <th scope="col">Description</th> -->
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let item of resRecordList; index as i">
-        <tr (click)="item.expanded = !item.expanded" style="cursor: pointer">
-          <td>
-            {{ i + 1 }}
-          </td>
-          <td>{{ item.date }}</td>
-          <td>{{ item.projectName }}</td>
-          <td>{{ item.task }}</td>
-          <td>{{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})</td>
-          <!-- <td> {{item.timesheetStatus }}</td> -->
-          <!-- <td>{{ item.endTime }}</td> -->
-          <!-- <td></td> -->
-          <!-- <td>
+  <div class="m-0">
+    <table class="table table-bordered">
+      <thead class="text-black">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Project</th>
+          <th scope="col">Task</th>
+          <th scope="col">Time (Est hrs.)</th>
+          <!-- <th scope="col">End Time</th> -->
+          <!-- <th scope="col">Calc Hrs.</th> -->
+          <!-- <th scope="col">Description</th> -->
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody class="text-black" style="height: 50px;">
+        <ng-container *ngFor="let item of resRecordList; index as i">
+          <tr (click)="item.expanded = !item.expanded" style="cursor: pointer">
+            <td>
+              {{ i + 1 }}
+            </td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.projectName }} <i class="bi bi-check-circle-fill text-success mx-2" *ngIf="item.billable"></i> <i class="bi bi-x-circle-fill text-danger mx-2" *ngIf="!item.billable"></i>
+            </td>
+            <td>{{ item.task }}</td>
+            <td>{{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})</td>
+            <!-- <td> {{item.timesheetStatus }}</td> -->
+            <!-- <td>{{ item.endTime }}</td> -->
+            <!-- <td></td> -->
+            <!-- <td>
             {{ item.description }}
           </td> -->
-          <td *ngIf="item.timesheetStatus == 'Pending'">
-            <p class="badge bg-warning">{{ item.timesheetStatus }}</p>
-          </td>
-          <td *ngIf="item.timesheetStatus == 'Approved'">
-            <p class="badge bg-success">{{ item.timesheetStatus }}</p>
-          </td>
-          <td *ngIf="item.timesheetStatus == 'Rejected'">
-            <p class="badge bg-danger">{{ item.timesheetStatus }}</p>
-          </td>
-        </tr>
-        <ng-container *ngIf="item.expanded">
-          <tr *ngFor="let details of findDetails(item)">
-            <td colspan="3">
-              <span class="fw-bold">Description:</span>
-              {{ details.description }}
+            <td *ngIf="item.timesheetStatus == 'Pending'">
+              <p class="badge bg-warning">{{ item.timesheetStatus }}</p>
             </td>
+            <td *ngIf="item.timesheetStatus == 'Approved'">
+              <p class="badge bg-success">{{ item.timesheetStatus }}</p>
+            </td>
+            <td *ngIf="item.timesheetStatus == 'Rejected'">
+              <p class="badge bg-danger">{{ item.timesheetStatus }}</p>
+            </td>
+            
           </tr>
+          <ng-container *ngIf="item.expanded">
+            <tr *ngFor="let details of findDetails(item)">
+              <td colspan="3">
+                <span class="fw-bold">Description:</span>
+                {{ details.description }}
+              </td>
+            </tr>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

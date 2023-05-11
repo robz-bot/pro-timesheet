@@ -10,6 +10,7 @@ import { Observable, OperatorFunction } from 'rxjs';
 import { timesheet } from 'src/app/models/timesheet';
 import { CommonService } from 'src/app/services/common.service';
 import { TimesheetService } from 'src/app/services/timesheet.service';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-timesheet-wait',
@@ -19,7 +20,9 @@ import { TimesheetService } from 'src/app/services/timesheet.service';
 export class TimesheetWaitComponent implements OnInit {
   constructor(
     private timesheetService: TimesheetService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private toaster: ToasterService,
+
   ) {}
 
   //Form Models Declarations
@@ -71,7 +74,7 @@ export class TimesheetWaitComponent implements OnInit {
       debounceTime(200),
       distinctUntilChanged(),
       map((term: any) =>
-        term === ''
+        term === ''            
           ? []
           : this.temp
               .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
@@ -92,6 +95,7 @@ export class TimesheetWaitComponent implements OnInit {
   }
 
   Search() {
+    console.log(this.employeeName)
     let empId = 0;
     this.employees.filter((x: any) => {
       if (x.split(':')[0].trim() == this.employeeName) {
@@ -106,6 +110,9 @@ export class TimesheetWaitComponent implements OnInit {
             console.log(res);
             this.recordList = res;
           });
+      }else{
+        this.toaster.showInvalidError('ERROR:',"invalid Emp Name");
+        return
       }
     });
   }

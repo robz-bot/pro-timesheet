@@ -6,29 +6,14 @@
         <div class="col-4">
           <div class="d-flex">
             <!-- <label class="fw-bold ">Emp Name:</label> -->
-            <input
-              id="typeahead-format"
-              type="text"
-              placeholder="Search for Employe Name"
-              class="form-control form-control-sm"
-              [(ngModel)]="employeeName"
-              name="employeeName"
-              [ngbTypeahead]="searchEmployees"
-              [resultFormatter]="formatter"
-            />
+            <input id="typeahead-format" type="text" placeholder="Search for Employe Name"
+              class="form-control form-control-sm" [(ngModel)]="employeeName" name="employeeName"
+              [ngbTypeahead]="searchEmployees" [resultFormatter]="formatter" />
 
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-dark mx-2"
-              (click)="Search()"
-            >
+            <button type="button" class="btn btn-sm btn-outline-dark mx-2" (click)="Search()">
               Search
             </button>
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-warning"
-              (click)="reset()"
-            >
+            <button type="button" class="btn btn-sm btn-outline-warning" (click)="reset()">
               Clear
             </button>
           </div>
@@ -37,18 +22,10 @@
           <form class="row row-cols-sm-auto">
             <div>
               <div class="input-group">
-                <input
-                  class="form-control form-control-sm"
-                  placeholder="dd/mm/yyyy"
-                  name="d2"
-                  ngbDatepicker
-                  #d2="ngbDatepicker"
-                />
-                <button
-                  class="btn btn-sm btn-outline-secondary bi bi-calendar3"
-                  (click)="d2.toggle()"
-                  type="button"
-                ></button>
+                <input class="form-control form-control-sm" placeholder="dd/mm/yyyy" name="d2" ngbDatepicker
+                  #d2="ngbDatepicker" />
+                <button class="btn btn-sm btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()"
+                  type="button"></button>
               </div>
             </div>
           </form>
@@ -57,45 +34,27 @@
           <div class="fw-bold cursor-pointer">
             <div>
               <p class="badge text-bg-light mx-2">Tags:</p>
-              <p
-                class="badge mx-2"
-                [ngClass]="setAllTagColor ? 'text-bg-warning' : 'text-bg-info '"
-                (click)="searchTagRecord('All')"
-              >
+              <p class="badge mx-2" [ngClass]="setAllTagColor ? 'text-bg-warning' : 'text-bg-info '"
+                (click)="searchTagRecord('All')">
                 All
               </p>
-              <p
-                class="badge mx-2"
-                [ngClass]="
+              <p class="badge mx-2" [ngClass]="
                   setTodayTagColor ? 'text-bg-warning' : 'text-bg-info '
-                "
-                (click)="searchTagRecord('Today')"
-              >
+                " (click)="searchTagRecord('Today')">
                 Today
               </p>
-              <p
-                class="badge mx-2"
-                [ngClass]="setYesTagColor ? 'text-bg-warning' : 'text-bg-info '"
-                (click)="searchTagRecord('Yesterday')"
-              >
+              <p class="badge mx-2" [ngClass]="setYesTagColor ? 'text-bg-warning' : 'text-bg-info '"
+                (click)="searchTagRecord('Yesterday')">
                 Yesterday
               </p>
-              <p
-                class="badge mx-2"
-                [ngClass]="
+              <p class="badge mx-2" [ngClass]="
                   setThisWeekTagColor ? 'text-bg-warning' : 'text-bg-info '
-                "
-                (click)="searchTagRecord('This Week')"
-              >
+                " (click)="searchTagRecord('This Week')">
                 This Week
               </p>
-              <p
-                class="badge"
-                [ngClass]="
+              <p class="badge" [ngClass]="
                   setLastWeekTagColor ? 'text-bg-warning' : 'text-bg-info '
-                "
-                (click)="searchTagRecord('Last Week')"
-              >
+                " (click)="searchTagRecord('Last Week')">
                 Last Week
               </p>
             </div>
@@ -103,8 +62,8 @@
         </div>
       </div>
     </div>
-    <table class="table table-sm table-striped table-bordered">
-      <thead class="table-info">
+    <table class="table table-bordered">
+      <thead class="text-black">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Emp. Name</th>
@@ -123,74 +82,41 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ item.userName }}</td>
           <td>{{ item.date }}</td>
-          <td>{{ item.projectName }}</td>
+          <td>{{ item.projectName }} <i class="bi bi-check-circle-fill text-success mx-2" *ngIf="item.billable"></i> <i
+              class="bi bi-x-circle-fill text-danger mx-2" *ngIf="!item.billable"></i></td>
           <td>{{ item.task }}</td>
           <td>{{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})</td>
           <td>{{ item.description }}</td>
           <td *ngIf="item.approvedByManager == 'Pending'">
-            <button
-              type="button"
-              style="font-size: 10px"
-              class="btn btn-outline-success mx-2"
-              (click)="approveTimeSheet('Approved', item)"
-            >
+            <button type="button" style="font-size: 10px" class="btn btn-outline-success mx-2"
+              (click)="approveTimeSheet('Approved', item)">
               <i class="bi bi-check2"></i>
             </button>
-            <button
-              type="button"
-              style="height: 30px; font-size: 10px"
-              class="btn btn-outline-danger m-2"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              (click)="getItem(item)"
-            >
+            <button type="button" style="height: 30px; font-size: 10px" class="btn btn-outline-danger m-2"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getItem(item)">
               <i class="bi bi-x-lg modal-dialog modal-dialog-centered"></i>
             </button>
-            <div
-              class="modal fade"
-              id="staticBackdrop"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                      Reject Comments
+                    <h1 class="modal-title fs-5 fw-bold" style="color: red;" id="staticBackdropLabel">
+                      Please give reason for rejection!
                     </h1>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <!-- <input type="textarea" name="" id="" > -->
-                    <textarea
-                      class="form-control form-control-sm"
-                      cols="53"
-                      rows="5"
-                      [(ngModel)]="comments"
-                    ></textarea>
+                    <textarea class="form-control form-control-sm" cols="53" rows="5" [(ngModel)]="comments"></textarea>
                   </div>
 
                   <div class="modal-footer" style="padding-right: 185px">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      (click)="approveTimeSheet('Declined', item)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                      (click)="approveTimeSheet('Declined', item)">
                       Save
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       Close
                     </button>
                   </div>

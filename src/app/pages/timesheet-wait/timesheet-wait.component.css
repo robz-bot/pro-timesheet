@@ -1,0 +1,17 @@
+.table{
+    /* background-color: #9ab7d7; */
+    /* outline-color: black; */
+    /* outline-style: groove; */
+    border: 1px solid black;
+  }
+  
+  thead{
+    background-color: #9ab7d7;
+    /* outline-color: black; */
+    /* outline-style: groove; */
+    border: 1px solid black;
+  }
+  
+  th, td {
+    border: 1px solid black;
+  }

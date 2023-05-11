@@ -17,4 +17,5 @@ export class timesheet {
   "projectName": string;
   "comments": string;
   "approvedByManager":string
+  "billable":boolean
 }

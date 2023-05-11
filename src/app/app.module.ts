@@ -7,7 +7,7 @@ import { HeaderComponent } from './shared-components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './shared-components/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NgbModule, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbModule, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { TimesheetComponent } from './pages/timesheet/timesheet.component';
 import { TimesheetCurrentComponent } from './pages/timesheet-current/timesheet-current.component';
 import { TimesheetWaitComponent } from './pages/timesheet-wait/timesheet-wait.component';
@@ -22,6 +22,13 @@ import { BarChartComponent } from './pages/charts/bar-chart/bar-chart.component'
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { BirthdayComponent } from './pages/occasions/birthday/birthday.component';
+import { AnniversaryComponent } from './pages/occasions/anniversary/anniversary.component';
+import { ManagerHistoryComponent } from './pages/history/manager-history/manager-history.component';
+import { RejectHistoryComponent } from './pages/history/reject-history/reject-history.component';
+import { ApprovedHistoryComponent } from './pages/history/approved-history/approved-history.component';
+import { HolidayComponent } from './pages/holiday/holiday.component';
+import { ChennaiCalComponent } from './pages/holiday/chennai-cal/chennai-cal.component';
+import { BillablechartComponent } from './pages/charts/billablechart/billablechart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +44,13 @@ import { BirthdayComponent } from './pages/occasions/birthday/birthday.component
     DonutChartComponent,
     BarChartComponent,
     BirthdayComponent,
+    AnniversaryComponent,
+    ManagerHistoryComponent,
+    RejectHistoryComponent,
+    ApprovedHistoryComponent,
+    HolidayComponent,
+    ChennaiCalComponent,
+    BillablechartComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +64,7 @@ import { BirthdayComponent } from './pages/occasions/birthday/birthday.component
     NgbTypeaheadModule,
     NgApexchartsModule,
     NgbPaginationModule,
+    NgbCollapseModule,
     ToastrModule.forRoot({
       timeOut: 150000, // 15 seconds
       closeButton: true,

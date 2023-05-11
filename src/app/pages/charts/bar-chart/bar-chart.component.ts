@@ -39,6 +39,7 @@ export type ChartOptions = {
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css'],
 })
+
 export class BarChartComponent implements OnInit {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: any;

@@ -23,9 +23,10 @@ export class CommonService {
       headers: {
         'pro-api-key': 'h1r5pr0',
       },
-    })
+    })     
   }
-
+  
+ 
   userId:any = sessionStorage.getItem('userId');;
   getUserId(): boolean {
     console.log("userId: "+this.userId)
@@ -47,7 +48,7 @@ export class CommonService {
   }
   getAllEmployeeName():Observable<Object>{
     return this.httpClient.get(`${this.getAllEmployeeUrl}` , {
-      headers: {
+      headers: { 
         'pro-api-key':'h1r5pr0',
       }
     })

@@ -3,6 +3,10 @@
   --bs-bg-opacity: 1;
   background-color: #163339;
 }
+.bg-history-tab {
+  --bs-bg-opacity: 1;
+  background-color: #163339cc;
+}
 
 .timesheet-info {
   display: flex !important;
@@ -24,4 +28,8 @@
 
 .fs-05 {
   font-size: calc(1.375rem + -0.5vw)!important;
+}
+
+*{
+  font-size: 14px;
 }

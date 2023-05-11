@@ -13,9 +13,16 @@ export class TimesheetComponent implements OnInit {
   waitTimesheetInfo: string = TIMESHEET_INFO.TIMESHEET_WAIT;
 
   constructor(private commonService: CommonService,) { }
-  loggedInUserId: number = 0;
+  loggedInUserId: any
+  loggedInManagerId = sessionStorage.getItem('managerId');
+  enableMenu: boolean = false;
+
   ngOnInit(): void {
     this.loggedInUserId = this.commonService.loggedInUserId();
+    if (this.loggedInUserId == this.loggedInManagerId) {
+      this.enableMenu = true
+    }
   }
+
 
 }

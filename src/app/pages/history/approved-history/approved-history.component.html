@@ -1,0 +1,17 @@
+<app-manager-history></app-manager-history>
+
+<details *ngFor="let item of responseKeys" class="my-2">
+  <summary class="text-black">{{ item }}</summary>
+  <ul class="my-2">
+    <ng-container *ngIf="approvedHistory[item].length == 0">
+      <p class="my-1">NIL</p>
+    </ng-container>
+    <li *ngFor="let obj of approvedHistory[item]">
+      <ng-container *ngIf="approvedHistory[item].length > 0">
+        {{ obj.updatedByName }} - {{ obj.projectName }} - {{ obj.task }} -
+        {{ obj.calHrs }} - {{ obj.comments }}
+      </ng-container>
+    </li>
+  </ul>
+</details>
+<br>
