@@ -27,8 +27,9 @@ export class CommonService {
   }
   
  
-  userId:any = sessionStorage.getItem('userId');;
+  userId:any
   getUserId(): boolean {
+    this.userId = sessionStorage.getItem('userId');
     console.log("userId: "+this.userId)
     return this.userId == null || this.userId == '' || this.userId == undefined
       ? false

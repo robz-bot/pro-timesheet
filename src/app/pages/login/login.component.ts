@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit {
       this.loginResData = data;
       if (this.loginResData.status == 0) {
         //Login success
-        this.setSessionValues(this.loginResData);
         this.toaster.showSuccess('SUCCESS:', this.loginResData.message);
         this.router.navigateByUrl('/pro-timesheet/dashboard/'+this.loginResData.id);
+        this.setSessionValues(this.loginResData);
       } else {
         this.toaster.showError('ERROR:', this.loginResData.message);
       }
