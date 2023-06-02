@@ -42,43 +42,47 @@ export class BillablechartComponent implements OnInit {
     private dashboardService: DashboardServiceService,
     private datePipe: DatePipe
   ) { }
-
+  billableCount: any
   ngOnInit(): void {
     this.dashboardService.getBillable(this.userId).subscribe((res: any) => {
       console.log(res);
       this.responseList = res;
-      const { Billable, NonBillable } = this.responseList;
-      this.billable = Billable;
-      this.nonBillable = NonBillable;
+      this.billableCount = Object.keys(this.responseList).length
+      if (this.billableCount > 0) {
+        const { Billable, NonBillable } = this.responseList;
+        this.billable = Billable;
+        this.nonBillable = NonBillable;
 
-      this.chartOptions = {
-        series: [this.billable, this.nonBillable],
-        labels: ["Billable", "Non Billable"],
-        chart: {
-          width: 380,
-          type: 'donut',
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        fill: {
-          type: 'gradient',
-        },
-        legend: this.billable,
-        responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200,
-              },
-              legend: {
-                position: 'bottom',
+        this.chartOptions = {
+          series: [this.billable, this.nonBillable],
+          labels: ["Billable", "Non Billable"],
+          chart: {
+            width: 380,
+            type: 'donut',
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          fill: {
+            type: 'gradient',
+          },
+          legend: this.billable,
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: 'bottom',
+                },
               },
             },
-          },
-        ],
-      };
+          ],
+        };
+      }
+
     });
   }
 }

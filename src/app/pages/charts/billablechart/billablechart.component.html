@@ -1,22 +1,17 @@
 <!-- <ng-container *ngIf="this.billable.length > 0 && this.nonBillable.length > 0"> -->
 <ng-container>
-    <h4 class="badge text-bg-dark fs-05">
-      Worked Projects and hours for the month - {{ currentMonth }} {{ currentYear }}
-    </h4>
+  <h4 class="badge text-bg-dark fs-05">
+    Worked Billable & Non-Billable for the month - {{ currentMonth }} {{ currentYear }}
+  </h4>
   <div id="chart">
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [labels]="chartOptions.labels"
-        [fill]="chartOptions.fill"
-        [dataLabels]="chartOptions.dataLabels"
-        [responsive]="chartOptions.responsive"
-      ></apx-chart>
-    </div>
-  </ng-container>
-  <!-- <ng-container *ngIf="this.hours.length == 0 && this.projects.length == 0">
-    <h4 class="badge text-bg-dark fs-05">
-      Worked Projects and hours for the month - {{ currentMonth }} {{ currentYear }}
-    </h4>
-   <small class="mx-2 badge text-bg-light">No record(s) found</small>
-  </ng-container> -->
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+      [fill]="chartOptions.fill" [dataLabels]="chartOptions.dataLabels"
+      [responsive]="chartOptions.responsive"></apx-chart>
+  </div>
+</ng-container>
+<ng-container *ngIf="billableCount == 0">
+  <h4 class="badge text-bg-dark fs-05">
+    Worked Billable & Non-Billable for the month - {{ currentMonth }} {{ currentYear }}
+  </h4>
+  <small class="mx-2 badge text-bg-light">No record(s) found</small>
+</ng-container>

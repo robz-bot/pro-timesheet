@@ -1,61 +1,54 @@
 <app-timesheet></app-timesheet>
+<div class="container">
+  <div class="months" style="padding-left: 250px;">
 
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <div class=m-2>
-                    <h5>HOLIDAY LIST</h5>
-                </div>
+    <span class="badge rounded-pill  m-2" [ngClass]="currentMonth == 1? 'text-bg-warning':'text-bg-primary'">Jan</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 2? 'text-bg-warning':'text-bg-primary'">Feb</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 3? 'text-bg-warning':'text-bg-primary'">Mar</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 4? 'text-bg-warning':'text-bg-primary'">Apr</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 5? 'text-bg-warning':'text-bg-primary'">May</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 6? 'text-bg-warning':'text-bg-primary'">Jun</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 7? 'text-bg-warning':'text-bg-primary'">Jul</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 8? 'text-bg-warning':'text-bg-primary'">Aug</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 9? 'text-bg-warning':'text-bg-primary'">Sep</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 10? 'text-bg-warning':'text-bg-primary'">Oct</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 11? 'text-bg-warning':'text-bg-primary'">Nov</span>
+    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 12? 'text-bg-warning':'text-bg-primary'">Dec</span>
+  </div>
+  <section class="ftco-section bg-light">
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
-                <div class="block-7">
-                    <!-- <div class="img" style="background-image: url(https://www.bootdey.com/image/350x280/FFB6C1/000000);"></div> -->
-                    <div class="text-center p-4">
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Chennai</a>
+    <table class="table">
+      <thead class="table-dark" style="border: groove; border-color: aliceblue;">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Holiday Name</th>
+          <th scope="col">Chennai</th>
+          <th scope="col">Bangalore</th>
+          <th scope="col">Gurgon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of holidayList; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{item.holidayName}}</td>
+ 
+          <td>
+            <span *ngIf="item.chennai">&#10004;</span>
+            <span *ngIf="!item.chennai">&#10060;</span>
+          </td>   
+          <td>
+            <span *ngIf="item.bangalore">&#10004;</span>
+            <span *ngIf="!item.bangalore">&#10060;</span>
+          </td>
+          <td>
+            <span *ngIf="item.gurgaon">&#10004;</span>
+            <span *ngIf="!item.gurgaon">&#10060;</span>
+          </td>
+        </tr>
+      </tbody>
+       
+      
+    </table>
 
-                        <ul class="pricing-text mb-5" style="padding:25px;">
-                            <li><span class="fa fa-check mr-2"></span>January 1</li>
-                            <li><span class="fa fa-check mr-2"></span>May 1</li>
-                            <li><span class="fa fa-check mr-2"></span>August 15</li>
-                            <li><span class="fa fa-check mr-2"></span>December 26</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
-                <div class="block-7">
-                    <!-- <div class="img" style="background-image: url(https://www.bootdey.com/image/350x280/87CEFA/000000);"></div> -->
-                    <div class="text-center p-4">
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Banglore</a>
-
-                        <ul class="pricing-text mb-5" style="padding:25px;">
-                            <li><span class="fa fa-check mr-2"></span>January 1</li>
-                            <li><span class="fa fa-check mr-2"></span>May 1</li>
-                            <li><span class="fa fa-check mr-2"></span>August 15</li>
-                            <li><span class="fa fa-check mr-2"></span>December 26</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
-                <div class="block-7">
-                    <!-- <div class="img" style="background-image: url(https://www.bootdey.com/image/350x280/FF7F50/000000);"></div> -->
-                    <div class="text-center p-4">
-                        <a href="#" class="btn btn-primary d-block px-2 py-3">Gurgon</a>
-
-                        <ul class="pricing-text mb-5" style="padding:25px;">
-                            <li><span class="fa fa-check mr-2"></span>January 1</li>
-                            <li><span class="fa fa-check mr-2"></span>May 1</li>
-                            <li><span class="fa fa-check mr-2"></span>August 15</li>
-                            <li><span class="fa fa-check mr-2"></span>December 26</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  </section>
+</div>

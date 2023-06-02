@@ -113,7 +113,7 @@ export class TimesheetCurrentComponent implements OnInit {
       debounceTime(200),
       distinctUntilChanged(),
       map((term: any) =>
-        term === ''
+        term ===''
           ? []
           : this.temp
               .filter(

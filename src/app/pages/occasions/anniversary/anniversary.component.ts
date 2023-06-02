@@ -21,6 +21,7 @@ export class AnniversaryComponent implements OnInit {
       .getAllDateOfJoining()
       .subscribe((res: any) => {
         console.log(res);
+        //year-month-date
         this.anniversary = res
       });
   }
