@@ -1,0 +1,23 @@
+<app-timesheet></app-timesheet>
+<div class="row" style="background-color: rgba(241, 236, 230, 0.938);">
+  <div class="col-3" style="border-right: 2px solid;">
+    <div class="row my-2">
+      <div class="col-3">
+        <img class="mx-1" src="assets/img/ho.jpg" alt="" height="80px">
+      </div>
+      <div class="col-9">
+        <p class="badge text-bg-secondary mx-4">Leave Management</p>
+        <p class="text-secondary mx-4">Keep up with your team's attendance with ease</p>
+      </div>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col text-center"><button class="btn btn-primary btn-md" (click)="renderComponent('apply')">Apply New Leave</button></div>
+      <div class="col text-center"><button class="btn btn-warning btn-md" (click)="renderComponent('list')">My Leave List</button></div>
+    </div>
+  </div>
+  <div class="col-9">
+    <app-newleave *ngIf="enableApplyLeaveComponent"></app-newleave>
+    <app-listleave *ngIf="enableListLeaveComponent"></app-listleave>
+  </div>
+</div>

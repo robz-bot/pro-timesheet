@@ -28,7 +28,34 @@ export type ChartOptions = {
 })
 export class BillablechartComponent implements OnInit {
   @ViewChild('chart') chart!: ChartComponent;
-  public chartOptions: any;
+  chartOptions:  any= {
+    series: [],
+    labels: [],
+    chart: {
+      width: 380,
+      type: 'donut',
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    fill: {
+      type: 'gradient',
+    },
+    legend: '',
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+          },
+        },
+      },
+    ],
+  };;
 
   responseList: any;
   billable: any;

@@ -29,6 +29,9 @@ import { ApprovedHistoryComponent } from './pages/history/approved-history/appro
 import { HolidayComponent } from './pages/holiday/holiday.component';
 import { ChennaiCalComponent } from './pages/holiday/chennai-cal/chennai-cal.component';
 import { BillablechartComponent } from './pages/charts/billablechart/billablechart.component';
+import { LeavetrackerComponent } from './pages/leavetracker/leavetracker.component';
+import { ListleaveComponent } from './pages/leavetracker/listleave/listleave.component';
+import { NewleaveComponent } from './pages/leavetracker/newleave/newleave.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,9 @@ import { BillablechartComponent } from './pages/charts/billablechart/billablecha
     HolidayComponent,
     ChennaiCalComponent,
     BillablechartComponent,
+    LeavetrackerComponent,
+    ListleaveComponent,
+    NewleaveComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
-<!-- <ng-container *ngIf="this.billable.length > 0 && this.nonBillable.length > 0"> -->
-<ng-container>
+<!-- <ng-container *ngIf="this.billable.length > 0 && this.nonBillable.length > 0">  -->
+<ng-container *ngIf="billableCount>0">
   <h4 class="badge text-bg-dark fs-05">
     Worked Billable & Non-Billable for the month - {{ currentMonth }} {{ currentYear }}
   </h4>

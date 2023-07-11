@@ -11,6 +11,7 @@ import { HomeComponent } from './shared-components/home/home.component';
 import { ManagerHistoryComponent } from './pages/history/manager-history/manager-history.component';
 import { ApprovedHistoryComponent } from './pages/history/approved-history/approved-history.component';
 import { RejectHistoryComponent } from './pages/history/reject-history/reject-history.component';
+import { LeavetrackerComponent } from './pages/leavetracker/leavetracker.component';
 import { HolidayComponent } from './pages/holiday/holiday.component';
 
 const routes: Routes = [
@@ -66,6 +67,13 @@ const routes: Routes = [
         pathMatch: 'full',
         canActivate: [AuthGuard],
       },
+      {
+        path: 'timesheet/leavetracker',
+        component: LeavetrackerComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+
       {
         path: 'timesheet/holiday',
         component: HolidayComponent,
