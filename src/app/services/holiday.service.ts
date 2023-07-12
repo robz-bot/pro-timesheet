@@ -15,6 +15,7 @@ export class HolidayService {
 
     private addHolidayUrl = this.baseUrl + 'addHoliday';
     private getAllHolidayUrl = this.baseUrl + 'getAllHoliday';
+    private getAllByMonthUrl = this.baseUrl + 'getAllByMonth';
     private updateHolidayUrl = this.baseUrl + 'updateHoliday';
     private deleteHolidayByIdUrL = this.baseUrl + 'deleteHolidayById';
 
@@ -42,8 +43,8 @@ export class HolidayService {
             },
         })
     }
-    getAllByMonth(month: number): Observable<Object> {
-        return this.httpClient.get(`${this.getAllByMonth}/${month}`,{
+    getAllByMonth(month: string): Observable<Object> {
+        return this.httpClient.get(`${this.getAllByMonthUrl}/${month}`,{
            headers: {
             'pro-api-key': 'h1r5pr0',
            },

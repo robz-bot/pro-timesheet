@@ -2,18 +2,18 @@
 <div class="container">
   <div class="months" style="padding-left: 250px;">
 
-    <span class="badge rounded-pill  m-2" [ngClass]="currentMonth == 1? 'text-bg-warning':'text-bg-primary'">Jan</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 2? 'text-bg-warning':'text-bg-primary'">Feb</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 3? 'text-bg-warning':'text-bg-primary'">Mar</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 4? 'text-bg-warning':'text-bg-primary'">Apr</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 5? 'text-bg-warning':'text-bg-primary'">May</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 6? 'text-bg-warning':'text-bg-primary'">Jun</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 7? 'text-bg-warning':'text-bg-primary'">Jul</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 8? 'text-bg-warning':'text-bg-primary'">Aug</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 9? 'text-bg-warning':'text-bg-primary'">Sep</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 10? 'text-bg-warning':'text-bg-primary'">Oct</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 11? 'text-bg-warning':'text-bg-primary'">Nov</span>
-    <span class="badge rounded-pill m-2" [ngClass]="currentMonth == 12? 'text-bg-warning':'text-bg-primary'">Dec</span>
+    <span style="cursor: pointer;" class="badge rounded-pill  m-2" [ngClass]="currentMonth == 1? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('01')">Jan</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 2? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('02')">Feb</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 3? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('03')">Mar</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 4? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('04')">Apr</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 5? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('05')">May</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 6? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('06')">Jun</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 7? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('07')">Jul</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 8? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('08')">Aug</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 9? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('09')">Sep</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 10? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('10')">Oct</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 11? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('11')">Nov</span>
+    <span style="cursor: pointer;" class="badge rounded-pill m-2" [ngClass]="currentMonth == 12? 'text-bg-warning':'text-bg-primary'" (click)="onChangeMonth('12')">Dec</span>
   </div>
   <section class="ftco-section bg-light">
 

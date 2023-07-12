@@ -7,14 +7,22 @@ import { HolidayService } from 'src/app/services/holiday.service';
   styleUrls: ['./holiday.component.css']
 })
 export class HolidayComponent implements OnInit {
-  holidayList: any;
+  holidayList: any[]=[];
   currentMonth: number = new Date().getMonth() + 1;
 
   constructor(private holidayService: HolidayService,) { }
 
   ngOnInit(): void {
     console.log(this.currentMonth)
-    this.holidayService.getAllHoliday().subscribe((res: any) => {
+    var month = this.currentMonth.toString().padStart(2, '0')
+    this.holidayService.getAllByMonth(month).subscribe((res: any) => {
+      console.log(res);
+      this.holidayList = res;
+    })
+  }
+
+  onChangeMonth(month:string){
+    this.holidayService.getAllByMonth(month).subscribe((res: any) => {
       console.log(res);
       this.holidayList = res;
     })
