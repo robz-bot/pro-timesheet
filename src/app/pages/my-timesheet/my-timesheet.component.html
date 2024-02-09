@@ -23,6 +23,7 @@
           <th scope="col">Project</th>
           <th scope="col">Task</th>
           <th scope="col">Time (Est hrs.)</th>
+          <th scope="col">Comments</th>
           <!-- <th scope="col">End Time</th> -->
           <!-- <th scope="col">Calc Hrs.</th> -->
           <!-- <th scope="col">Description</th> -->
@@ -36,11 +37,11 @@
               {{ i + 1 }}
             </td>
             <td>{{ item.date }}</td>
-            <td>{{ item.projectName }} <i class="bi bi-check-circle-fill text-success mx-2" *ngIf="item.billable"></i> <i class="bi bi-x-circle-fill text-danger mx-2" *ngIf="!item.billable"></i>
+            <td>{{ item.projectName }} <i class="bi bi-check-circle-fill text-success mx-2" *ngIf="item.billable" title="Billable"></i> <i class="bi bi-x-circle-fill text-danger mx-2" *ngIf="!item.billable" title="Non-Billable"></i>
             </td>
             <td>{{ item.task }}</td>
             <td>{{ item.startTime }} - {{ item.endTime }} ({{ item.calHrs }})</td>
-            <!-- <td> {{item.timesheetStatus }}</td> -->
+            <td> {{item.comments }}</td>
             <!-- <td>{{ item.endTime }}</td> -->
             <!-- <td></td> -->
             <!-- <td>
