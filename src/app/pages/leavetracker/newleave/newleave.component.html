@@ -1,51 +1,69 @@
 <div class="container">
-<form class="row g-3">
-  <div class="col-md-6">
-      <label for="validationCustom04" class="form-label"><b>Leave</b></label>
-      <select class="form-select" id="validationCustom04" required>
+  <form class="row g-3">
+    <div class="col-md-4">
+      <label  style="font-weight: bold"><b>Leave</b></label>
+      <select class="form-select form-select-md" id="validationCustom04" required>
         <option selected disabled value="">Select the Leave</option>
         <option>Casual Leave</option>
         <option>Sick Leave</option>
         <option>Paternity Leave</option>
         <option>Maternity Leave</option>
-
       </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
+    </div>
+    <div class="col-md-4">
+      <label style="font-weight: bold">From Date</label>
+      <div class="input-group align-div-center">
+        <input
+          class="form-control form-control-md"
+          placeholder="yyyy-mm-dd"
+          name="fromdate"
+          ngbDatepicker
+          #d="ngbDatepicker"
+        />
+        <button
+          class="btn btn-sm btn-outline-secondary bi bi-calendar3"
+          (click)="d.toggle()"
+          type="button"
+        ></button>
       </div>
     </div>
-  <div class="col-md-6">
-    <label style="font-weight:bold;">From Date</label>
-    <div class="input-group">
-      <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="fromdate"
-        ngbDatepicker #d="ngbDatepicker" />
-      <button class="btn btn-sm btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+    <div class="col-md-4">
+      <label style="font-weight: bold">To Date</label>
+      <div class="input-group">
+        <input
+          class="form-control form-control-md"
+          placeholder="yyyy-mm-dd"
+          name="todate"
+          ngbDatepicker
+          #ad="ngbDatepicker"
+        />
+        <button
+          class="btn btn-sm btn-outline-secondary bi bi-calendar3"
+          (click)="ad.toggle()"
+          type="button"
+        ></button>
+      </div>
     </div>
-    <label style="font-weight:bold;" >To Date</label>
-    <div class="input-group">
-      <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="todate"
-        ngbDatepicker #ad="ngbDatepicker" />
-      <button class="btn btn-sm btn-outline-secondary bi bi-calendar3" (click)="ad.toggle()" type="button"></button>
+    <div class="col-12">
+      <label for="reason" class="form-label"><b> Reason</b></label>
+      <textarea class="form-control" id="inputReason" rows="4"></textarea>
     </div>
-  </div>
-  <div class="col-12">
-    <label for="reason" class="form-label"><b> Reason</b></label>
-    <textarea class="form-control" id="inputReason" rows="4"></textarea>
-  </div>
- 
-  <div class="col-md-6">
-      <label for="formFileMultiple" class="form-label"><i class="bi bi-pin-angle-fill mx-2"></i><b>Attachment</b></label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple>
-    </div>
- 
 
+    <div class="col-md-6">
+      <label for="formFileMultiple" class="form-label"
+        ><i class="bi bi-pin-angle-fill mx-2"></i><b>Attachment</b></label
+      >
+      <input class="form-control" type="file" id="formFileMultiple" multiple />
+    </div>
 
-<div class="card">
-  <h5 class="card-header" ><b>Note</b></h5>
-  <div class="card-body" style="color: rgb(88, 88, 214);">
-    <p class="card-text">Once you submitted the form, The application will be sent to Manager </p>
-    <button class="btn btn-primary"> Submit</button>
-  </div>
-</div>
-</form>
+    <div class="card">
+      <h5 class="card-header"><b>Note</b></h5>
+      <div class="card-body" style="color: rgb(88, 88, 214)">
+        <p class="card-text">
+          Once you submitted the form, your application will be sent to Manager
+        </p>
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
 </div>

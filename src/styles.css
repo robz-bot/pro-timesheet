@@ -33,3 +33,9 @@
 *{
   font-size: 14px;
 }
+
+.align-div-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
