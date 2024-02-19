@@ -55,7 +55,7 @@
               <p class="badge" [ngClass]="
                   setLastWeekTagColor ? 'text-bg-warning' : 'text-bg-info '
                 " (click)="searchTagRecord('Last Week')">
-                Last Week 
+                Last Week
               </p>
             </div>
           </div>
@@ -78,6 +78,7 @@
         </tr>
       </thead>
       <tbody>
+        <tr *ngIf="recordList.length == 0"><td colspan="9"><p class="text-center">No record(s) found</p></td></tr>
         <tr *ngFor="let item of recordList; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ item.userName }}</td>
